@@ -1,4 +1,4 @@
-package com.pms.in.demo;
+package com.pms.in;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

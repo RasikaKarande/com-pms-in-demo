@@ -58,7 +58,7 @@ public class IPensionerService {
 		}
 	}
 
-	// view:
+	// view all pensio ner
 	public List<PensionerDetails> getAllPensionersDetails() {
 		System.out.println("Service getAllEmployees");
 		return pensionRepository.findAll();
