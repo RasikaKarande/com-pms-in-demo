@@ -22,7 +22,7 @@ public class IPensionerService {
 	@Autowired
 	private static IPensionerRepository pensionRepository;
 
-	public static PensionerDetails addPensionerDetails(PensionerDetails pensionerdetails) {
+	public PensionerDetails addPensionerDetails(PensionerDetails pensionerdetails) {
 		LOG.info("Pensioner Details");
 		if (!pensionRepository.existsById(pensionerdetails.getPensioner_id()))
 			return pensionRepository.save(pensionerdetails);
@@ -34,7 +34,7 @@ public class IPensionerService {
 	}
 
 	// Update
-	public static PensionerDetails updatePensionerDetails(PensionerDetails pensionerdetails) {
+	public PensionerDetails updatePensionerDetails(PensionerDetails pensionerdetails) {
 		LOG.info("UpadtePensionerDetails");
 		if (pensionRepository.existsById(pensionerdetails.getPensioner_id()))
 			return pensionRepository.save(pensionerdetails);
@@ -47,7 +47,7 @@ public class IPensionerService {
 
 //Delete
 
-	public static PensionerDetails deletePensionerDetails(PensionerDetails pensionerdetails) {
+	public PensionerDetails deletePensionerDetails(PensionerDetails pensionerdetails) {
 		LOG.info("PensionerDetails");
 		if (pensionRepository.existsById(pensionerdetails.getPensioner_id())) {
 			pensionRepository.delete(pensionerdetails);

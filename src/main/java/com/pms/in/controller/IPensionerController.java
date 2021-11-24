@@ -30,16 +30,22 @@ public class IPensionerController {
 	@Autowired
 	private IPensionerService pensionService;
 	//<PensionerDetails> getAllPensionersDetails
-		@GetMapping
-		public ResponseEntity<List<PensionerDetails>> getAllPensionersDetails(){
-			  List<PensionerDetails> list = pensionService.getAllPensionersDetails();
-			  
-		        return new ResponseEntity<List<PensionerDetails>>(list, new HttpHeaders(), HttpStatus.OK);
-		}
+//		@GetMapping
+//		public ResponseEntity<List<PensionerDetails>> getAllPensionersDetails(){
+//			  List<PensionerDetails> list = pensionService.getAllPensionersDetails();
+//			  
+//		        return new ResponseEntity<List<PensionerDetails>>(list, new HttpHeaders(), HttpStatus.OK);
+//		}
+	@GetMapping("/getAllPensionersDetails")
+	public List<PensionerDetails> getAllPensionersDetails() {
+		LOG.info("getAllPensionersDetails");
+		return pensionService.getAllPensionersDetails();
+		
+	}
 	@PostMapping("/addpensioner")
 	public ResponseEntity<PensionerDetails> addpensioner(@RequestBody PensionerDetails pensionerdetails) {
 		LOG.info("Controller addPensioner");
-		PensionerDetails  p1 = IPensionerService. addPensionerDetails(pensionerdetails);
+		PensionerDetails  p1 = pensionService. addPensionerDetails(pensionerdetails);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", "This pensioner  is added to database.");
 		LOG.info(headers.toString());
@@ -51,7 +57,7 @@ public class IPensionerController {
 	@PostMapping("/updatepensioner")
 	public ResponseEntity<PensionerDetails> updatepensioner(@RequestBody PensionerDetails pensionerdetails) {
 		LOG.info("Controller updatePensioner");
-		PensionerDetails  p1 = IPensionerService. updatePensionerDetails(pensionerdetails);
+		PensionerDetails  p1 = pensionService. updatePensionerDetails(pensionerdetails);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", "This pensioner Details are updated to database.");
 		LOG.info(headers.toString());
@@ -63,7 +69,7 @@ public class IPensionerController {
 	@PostMapping("/deletepensioner")
 	public ResponseEntity<PensionerDetails> deletepensioner(@RequestBody PensionerDetails pensionerdetails) {
 		LOG.info("Controller updatePensioner");
-		PensionerDetails  p1 = IPensionerService. deletePensionerDetails(pensionerdetails);
+		PensionerDetails  p1 = pensionService. deletePensionerDetails(pensionerdetails);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("message", "This pensioner Details are Deleted.");
 		LOG.info(headers.toString());
